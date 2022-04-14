@@ -13,11 +13,13 @@ class _auto_genState extends State<auto_gen> {
   String pwd='';
   void autogen() {
     setState(() {
+      // if(_formkey.currentState!.validate()) {
         List result = data.split('');
         result.shuffle();
         var x = int.parse(t1.text);
         List pwdarr = result.sublist(1,x+1);
         pwd=pwdarr.join("");
+      // }
     });
   }
 
@@ -40,6 +42,8 @@ class _auto_genState extends State<auto_gen> {
     return Scaffold(
       appBar: new AppBar(
         // backgroundColor: Colors.white,
+        toolbarHeight: 75.0,
+        title: Text("Generate password using\ndefault characters"),
       ),
       body: new Container(
         padding: const EdgeInsets.all(45.0),
@@ -49,17 +53,14 @@ class _auto_genState extends State<auto_gen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Center(
-                child: new Text(
-                  "Generate password using default characters",
-                  textAlign: TextAlign.center,
-                  style: new TextStyle(
-                    fontSize: 25.0,
-                  ),
-                ),
+                // child: new Text(
+                //   "Generate password using default characters",
+                //   textAlign: TextAlign.center,
+                //   style: new TextStyle(
+                //     fontSize: 25.0,
+                //   ),
+                // ),
               ),
-              new Padding(
-                padding: const EdgeInsets.all(20.0),
-                ),
               new Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -77,9 +78,9 @@ class _auto_genState extends State<auto_gen> {
                     controller: t1,
                     // validator: (value) {
                     //   if(value==null || value.isEmpty) {
-                    //     return "Please input some numbers";
+                    //     return "Please enter a number";
                     //   }
-                    //   return null;
+                    //   return null; 
                     // }
                   ),
                   new Padding(
@@ -123,12 +124,16 @@ class _auto_genState extends State<auto_gen> {
                       // fontWeight: FontWeight.bold,
                     ),
                   ),
+                  new Padding(
+                padding: const EdgeInsets.all(05.0),
+                ),
                   new SelectableText(
                     "$pwd",
                     style: new TextStyle(
                       fontSize: 20.0,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
+                      
                     ),
                   )
             ],

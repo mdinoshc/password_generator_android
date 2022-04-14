@@ -71,6 +71,8 @@ void clear() {
     return Scaffold(
       appBar: new AppBar(
         // backgroundColor: Colors.white,
+        toolbarHeight: 75.0,
+        title: Text("Generate password using\nuser's favorite characters"),
       ),
       body: new Container(
         padding: const EdgeInsets.all(40.0),
@@ -78,18 +80,14 @@ void clear() {
           child: new Column(
             children: <Widget>[
               Center(
-                child: new Text(
-                  "Generate password using user's favorite characters",
-                  textAlign: TextAlign.center,
-                  style: new TextStyle(
-                    fontSize: 25.0,
-                  ),
-                ),
+                // child: new Text(
+                //   "Generate password using user's favorite characters",
+                //   textAlign: TextAlign.center,
+                //   style: new TextStyle(
+                //     fontSize: 25.0,
+                //   ),
+                // ),
               ),
-
-              new Padding(
-                padding: const EdgeInsets.all(20.0),
-                ),
 
               new Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -214,6 +212,9 @@ void clear() {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  new Padding(
+                padding: const EdgeInsets.all(05.0),
+                ),
                   new SelectableText(
                     "$pwd1",
                     style: TextStyle(
