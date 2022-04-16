@@ -22,6 +22,36 @@ final TextEditingController t4 = new TextEditingController(text: "");
 
 void usergen() {
   setState(() {
+    if(t1.text.isEmpty && t2.text.isEmpty && t3.text.isEmpty && t4.text.isEmpty) {
+          showDialog(
+        context: context, 
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: RichText(
+              text: TextSpan(
+                children: [
+                  WidgetSpan(
+                    child: Icon(Icons.warning_rounded),
+                  ),
+                  TextSpan(
+                    text: " Alert",
+                  )
+                ]
+              )
+              ),
+            content: Text("Value can't be empty"),
+            actions: [
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                }, 
+                child: Text("Ok")
+                )
+            ],
+          );
+        }
+        );
+        } else {
     num = int.parse(t3.text);
     String numstr = num.toString();
     alpha = t2.text;
@@ -53,6 +83,7 @@ void usergen() {
         );
       
     }
+        }
   });
 }
 
@@ -173,34 +204,72 @@ void clear() {
                 padding: const EdgeInsets.all(20.0),
                 ),
 
-                  new ElevatedButton(
-                  onPressed: usergen, 
-                  child: Text(
-                    "Generate"
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(250, 40),
+                  // new ElevatedButton(
+                  // onPressed: usergen, 
+                  // child: Text(
+                  //   "Generate"
+                  // ),
+                  // // icon: Icon(Icons.settings_applications),
+                  // style: ElevatedButton.styleFrom(
+                  //   fixedSize: const Size(250, 40),
+                  //   textStyle: TextStyle(
+                  //     fontSize: 20,
+                  //   ) 
+                  // ),
+                  // ),
+
+                   Container(
+                  margin: const EdgeInsets.all(5),
+                  child: ElevatedButton.icon(
+                    onPressed: usergen,
+                    label: Text('Generate'),
+                    icon: Icon(Icons.settings_applications),
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(200, 40),
                     textStyle: TextStyle(
                       fontSize: 20,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)
                     ) 
-                  ),
-                  ),
+                    ),
+              )),
+
+
                    new Padding(
                 padding: const EdgeInsets.all(10.0),
                 ),
 
-                  new ElevatedButton(
-                  onPressed: clear, 
-                  child: Text(
-                    "Clear"
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(250, 40),
+                  // new ElevatedButton(
+                  // onPressed: clear, 
+                  // child: Text(
+                  //   "Clear"
+                  // ),
+                  // style: ElevatedButton.styleFrom(
+                  //   fixedSize: const Size(250, 40),
+                  //   textStyle: TextStyle(
+                  //     fontSize: 20,
+                  //   ) 
+                  // ),
+                  // ),
+
+                  Container(
+              margin: const EdgeInsets.all(5),
+              child: ElevatedButton.icon(
+                onPressed: clear,
+                label: Text('Clear'),
+                icon: Icon(Icons.delete_rounded),
+                style: ElevatedButton.styleFrom(
+                  fixedSize: const Size(200, 40),
                     textStyle: TextStyle(
                       fontSize: 20,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)
                     ) 
-                  ),
-                  ),
+                ),
+              )),
+
                   new Padding(
                 padding: const EdgeInsets.all(20.0),
                 ),

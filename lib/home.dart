@@ -9,11 +9,22 @@ class menu_page extends StatefulWidget {
   _menu_pageState createState() => _menu_pageState();
 }
 
+// ThemeData _LightTheme = ThemeData(
+//   brightness: Brightness.light,
+// );
+
+// ThemeData _darkTheme = ThemeData(
+//   brightness: Brightness.dark,
+// );
+
+// bool _Light = true;
+
 class _menu_pageState extends State<menu_page> {
   get child => null;
 
   @override
   Widget build(BuildContext context) {
+    // theme: _Light ? _LightTheme:_darkTheme;
     return Scaffold(
       body: new Container(
         padding: const EdgeInsets.all(40.0),
@@ -57,6 +68,9 @@ class _menu_pageState extends State<menu_page> {
                     fixedSize: const Size(250, 40),
                     textStyle: TextStyle(
                       fontSize: 20,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)
                     ) 
                   ),
                   ),
@@ -74,9 +88,19 @@ class _menu_pageState extends State<menu_page> {
                     fixedSize: const Size(250, 40),
                     textStyle: TextStyle(
                       fontSize: 20,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)
                     ) 
                   ),
                   ),
+                  // new Switch(
+                  //   value: _Light, 
+                  //   onChanged: (state) { 
+                  //     setState(() {
+                  //       _Light=state;
+                  //     });
+                  //   }),
             ],
           ),
         ),
