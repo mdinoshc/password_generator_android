@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pwd_gen/auto_generate.dart';
 import 'package:pwd_gen/user_generate.dart';
+import 'package:pwd_gen/main.dart';
 
 class menu_page extends StatefulWidget {
   const menu_page({ Key? key }) : super(key: key);
@@ -9,24 +10,33 @@ class menu_page extends StatefulWidget {
   _menu_pageState createState() => _menu_pageState();
 }
 
-// ThemeData _LightTheme = ThemeData(
-//   brightness: Brightness.light,
-// );
+ThemeData _LightTheme = ThemeData(
+  brightness: Brightness.light,
+);
 
-// ThemeData _darkTheme = ThemeData(
-//   brightness: Brightness.dark,
-// );
+ThemeData _darkTheme = ThemeData(
+  brightness: Brightness.dark,
+);
 
-// bool _Light = true;
+bool _Light = true;
 
 class _menu_pageState extends State<menu_page> {
   get child => null;
 
   @override
   Widget build(BuildContext context) {
-    // theme: _Light ? _LightTheme:_darkTheme;
     return Scaffold(
       body: new Container(
+        constraints:const BoxConstraints.expand(),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              "assets/images/bckgrnd.jpg",
+              ),
+            // colorFilter: ColorFilter.mode(Colors.white, BlendMode.dstATop),
+            fit: BoxFit.cover
+            )
+        ),
         padding: const EdgeInsets.all(40.0),
         child: SingleChildScrollView(
           child: new Column(
@@ -64,14 +74,19 @@ class _menu_pageState extends State<menu_page> {
                   child: Text(
                     "Auto Generate"
                   ),
+                  // child:Decoration: BoxDecoration(
+                  //     gradient: const LinearGradient(colors: [Colors.red, Colors.yellow]),
+                  //   ),
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 40),
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
+                    primary: Colors.indigo[900],
+                    shadowColor: Colors.black,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)
-                    ) 
+                    ), 
                   ),
                   ),
                   new Padding(
@@ -86,6 +101,8 @@ class _menu_pageState extends State<menu_page> {
                   ),
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 40),
+                    shadowColor: Colors.black,
+                    primary: Colors.indigo[900],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
@@ -94,13 +111,6 @@ class _menu_pageState extends State<menu_page> {
                     ) 
                   ),
                   ),
-                  // new Switch(
-                  //   value: _Light, 
-                  //   onChanged: (state) { 
-                  //     setState(() {
-                  //       _Light=state;
-                  //     });
-                  //   }),
             ],
           ),
         ),

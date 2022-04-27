@@ -14,7 +14,6 @@ class _auto_genState extends State<auto_gen> {
   String pwd='';
   void autogen() {
     setState(() {
-      // if(_formkey.currentState!.validate()) {
         if(t1.text.isEmpty) {
           showDialog(
         context: context, 
@@ -45,11 +44,11 @@ class _auto_genState extends State<auto_gen> {
         }
         );
         } else {
-        List result = data.split('');
-        result.shuffle();
-        var x = int.parse(t1.text);
-        List pwdarr = result.sublist(1,x+1);
-        pwd=pwdarr.join("");
+            List result = data.split('');
+            result.shuffle();
+            var x = int.parse(t1.text);
+            List pwdarr = result.sublist(1,x+1);
+            pwd=pwdarr.join("");
         }
         // t2.text=pwd;
       // }
@@ -81,6 +80,16 @@ class _auto_genState extends State<auto_gen> {
         title: Text("Generate password using\ndefault characters"),
       ),
       body: new Container(
+        constraints:const BoxConstraints.expand(),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              "assets/images/bckgrnd.jpg",
+              ),
+            // colorFilter: ColorFilter.mode(Colors.white, BlendMode.dstATop),
+            fit: BoxFit.cover
+            )
+        ),
         padding: const EdgeInsets.all(45.0),
         child: SingleChildScrollView(
           key: _formkey,
@@ -109,7 +118,10 @@ class _auto_genState extends State<auto_gen> {
               ),
               new TextFormField(
                     keyboardType: TextInputType.number,
-                    decoration: new InputDecoration(hintText: "Enter characters no."),
+                    decoration: new InputDecoration(
+                      hintText: "Enter characters no.",
+                      hintStyle: TextStyle(fontSize: 20.0, color: Colors.black),
+                      ),
                     controller: t1,
                     // validator: (value) {
                     //   if(value==null || value.isEmpty) {
@@ -143,6 +155,8 @@ class _auto_genState extends State<auto_gen> {
                     icon: Icon(Icons.settings_applications),
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(200, 40),
+                      shadowColor: Colors.black,
+                      primary: Colors.indigo[900],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
@@ -177,6 +191,8 @@ class _auto_genState extends State<auto_gen> {
                 icon: Icon(Icons.delete_rounded),
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(200, 40),
+                  shadowColor: Colors.black,
+                  primary: Colors.indigo[900],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
@@ -194,7 +210,7 @@ class _auto_genState extends State<auto_gen> {
                     style: new TextStyle(
                       fontSize: 15.0,
                       color: Colors.black,
-                      // fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   new Padding(

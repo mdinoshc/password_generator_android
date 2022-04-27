@@ -106,6 +106,16 @@ void clear() {
         title: Text("Generate password using\nuser's favorite characters"),
       ),
       body: new Container(
+        constraints:const BoxConstraints.expand(),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              "assets/images/bckgrnd.jpg",
+              ),
+            // colorFilter: ColorFilter.mode(Colors.white, BlendMode.dstATop),
+            fit: BoxFit.cover
+            )
+        ),
         padding: const EdgeInsets.all(40.0),
         child: SingleChildScrollView(
           child: new Column(
@@ -133,7 +143,8 @@ void clear() {
               ),
               new TextField(
                     keyboardType: TextInputType.number,
-                    decoration: new InputDecoration(hintText: "Enter characters no."),
+                    decoration: new InputDecoration(hintText: "Enter characters no.",
+                    hintStyle: TextStyle(fontSize: 15.0, color: Colors.black),),
                     controller: t1,
                   ),
 
@@ -154,7 +165,8 @@ void clear() {
               ),
               new TextField(
                     keyboardType: TextInputType.text,
-                    decoration: new InputDecoration(hintText: "Enter alphabets"),
+                    decoration: new InputDecoration(hintText: "Enter alphabets",
+                    hintStyle: TextStyle(fontSize: 15.0, color: Colors.black),),
                     controller: t2,
                   ),
 
@@ -175,7 +187,8 @@ void clear() {
               ),
               new TextField(
                     keyboardType: TextInputType.text,
-                    decoration: new InputDecoration(hintText: "Enter numbers"),
+                    decoration: new InputDecoration(hintText: "Enter numbers",
+                    hintStyle: TextStyle(fontSize: 15.0, color: Colors.black),),
                     controller: t3,
                   ),
 
@@ -196,7 +209,8 @@ void clear() {
               ),
               new TextField(
                     keyboardType: TextInputType.text,
-                    decoration: new InputDecoration(hintText: "Enter special characters"),
+                    decoration: new InputDecoration(hintText: "Enter special characters",
+                    hintStyle: TextStyle(fontSize: 15.0, color: Colors.black),),
                     controller: t4,
                   ),
 
@@ -226,6 +240,8 @@ void clear() {
                     icon: Icon(Icons.settings_applications),
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(200, 40),
+                      shadowColor: Colors.black,
+                      primary: Colors.indigo[900],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
@@ -261,6 +277,8 @@ void clear() {
                 icon: Icon(Icons.delete_rounded),
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(200, 40),
+                  shadowColor: Colors.black,
+                  primary: Colors.indigo[900],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
