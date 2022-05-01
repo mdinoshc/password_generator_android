@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pwd_gen/auto_generate.dart';
 import 'package:pwd_gen/user_generate.dart';
-import 'package:pwd_gen/main.dart';
 
+// ignore: camel_case_types
 class menu_page extends StatefulWidget {
   const menu_page({ Key? key }) : super(key: key);
 
@@ -10,16 +10,7 @@ class menu_page extends StatefulWidget {
   _menu_pageState createState() => _menu_pageState();
 }
 
-ThemeData _LightTheme = ThemeData(
-  brightness: Brightness.light,
-);
-
-ThemeData _darkTheme = ThemeData(
-  brightness: Brightness.dark,
-);
-
-bool _Light = true;
-
+// ignore: camel_case_types
 class _menu_pageState extends State<menu_page> {
   get child => null;
 
@@ -33,14 +24,12 @@ class _menu_pageState extends State<menu_page> {
             image: AssetImage(
               "assets/images/bckgrnd.jpg",
               ),
-            // colorFilter: ColorFilter.mode(Colors.white, BlendMode.dstATop),
             fit: BoxFit.cover
             )
         ),
         padding: const EdgeInsets.all(40.0),
         child: SingleChildScrollView(
           child: new Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Padding(
                 padding: const EdgeInsets.all(30.0),
@@ -74,9 +63,6 @@ class _menu_pageState extends State<menu_page> {
                   child: Text(
                     "Auto Generate"
                   ),
-                  // child:Decoration: BoxDecoration(
-                  //     gradient: const LinearGradient(colors: [Colors.red, Colors.yellow]),
-                  //   ),
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 40),
                     textStyle: TextStyle(

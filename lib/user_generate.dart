@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:cool_alert/cool_alert.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
+// ignore: camel_case_types
 class user_gen extends StatefulWidget {
   const user_gen({ Key? key }) : super(key: key);
 
@@ -8,6 +9,7 @@ class user_gen extends StatefulWidget {
   _user_genState createState() => _user_genState();
 }
 
+// ignore: camel_case_types
 class _user_genState extends State<user_gen> {
 
 String pwd1='';
@@ -22,47 +24,35 @@ final TextEditingController t4 = new TextEditingController(text: "");
 
 void usergen() {
   setState(() {
-    if(t1.text.isEmpty && t2.text.isEmpty && t3.text.isEmpty && t4.text.isEmpty) {
-          showDialog(
-        context: context, 
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: RichText(
-              text: TextSpan(
-                children: [
-                  WidgetSpan(
-                    child: Icon(Icons.warning_rounded),
-                  ),
-                  TextSpan(
-                    text: " Alert",
-                  )
-                ]
-              )
-              ),
-            content: Text("Value can't be empty"),
-            actions: [
-              FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                }, 
-                child: Text("Ok")
-                )
-            ],
-          );
-        }
-        );
+    if(t1.text.isEmpty || t2.text.isEmpty || t3.text.isEmpty || t4.text.isEmpty) {
+        Alert(
+      context: context,
+      type: AlertType.warning,
+      title: "Alert",
+      desc: "Values can't be empty...",
+      buttons: [
+        DialogButton(
+          child: Text(
+            "Ok",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => Navigator.pop(context),
+          color: Color.fromRGBO(75, 0, 130, 1.0),
+        ),
+      ],
+    ).show();
         } else {
     num = int.parse(t3.text);
     String numstr = num.toString();
     alpha = t2.text;
     symbol = t4.text;
-    String tot_data=numstr+alpha+symbol;
-    List result=tot_data.split('');
+    String totData=numstr+alpha+symbol;
+    List result=totData.split('');
     result.shuffle();
     var y = int.parse(t1.text);
-    if(tot_data.length > y) {
-      List pwd_arr = result.sublist(1,y+1);
-      pwd1=pwd_arr.join("");
+    if(totData.length > y) {
+      List pwdArr = result.sublist(1,y+1);
+      pwd1=pwdArr.join("");
     } else {
       showDialog(
         context: context, 
@@ -71,6 +61,7 @@ void usergen() {
             title: Text("Alert !"),
             content: Text("Incompatible password length..."),
             actions: [
+              // ignore: deprecated_member_use
               FlatButton(
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -101,7 +92,6 @@ void clear() {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        // backgroundColor: Colors.white,
         toolbarHeight: 75.0,
         title: Text("Generate password using\nuser's favorite characters"),
       ),
@@ -112,7 +102,6 @@ void clear() {
             image: AssetImage(
               "assets/images/bckgrnd.jpg",
               ),
-            // colorFilter: ColorFilter.mode(Colors.white, BlendMode.dstATop),
             fit: BoxFit.cover
             )
         ),
@@ -120,27 +109,7 @@ void clear() {
         child: SingleChildScrollView(
           child: new Column(
             children: <Widget>[
-              Center(
-                // child: new Text(
-                //   "Generate password using user's favorite characters",
-                //   textAlign: TextAlign.center,
-                //   style: new TextStyle(
-                //     fontSize: 25.0,
-                //   ),
-                // ),
-              ),
 
-              new Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  // new Text(
-                  //   "No. of characters :",
-                  //   style: new TextStyle(
-                  //     fontSize: 15,
-                  //   ),
-                  // ),
-                ],
-              ),
               new TextField(
                     keyboardType: TextInputType.number,
                     decoration: new InputDecoration(hintText: "Enter characters no.",
@@ -149,20 +118,9 @@ void clear() {
                   ),
 
                   new Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(05.0),
                 ),
 
-                new Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  // new Text(
-                  //   "Alphabets :",
-                  //   style: new TextStyle(
-                  //     fontSize: 15,
-                  //   ),
-                  // ),
-                ],
-              ),
               new TextField(
                     keyboardType: TextInputType.text,
                     decoration: new InputDecoration(hintText: "Enter alphabets",
@@ -171,42 +129,20 @@ void clear() {
                   ),
 
                   new Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(05.0),
                 ),
 
-                new Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  // new Text(
-                  //   "Numbers :",
-                  //   style: new TextStyle(
-                  //     fontSize: 15,
-                  //   ),
-                  // ),
-                ],
-              ),
               new TextField(
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.number,
                     decoration: new InputDecoration(hintText: "Enter numbers",
                     hintStyle: TextStyle(fontSize: 15.0, color: Colors.black),),
                     controller: t3,
                   ),
 
                   new Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(05.0),
                 ),
 
-                new Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  // new Text(
-                  //   "Special characters :",
-                  //   style: new TextStyle(
-                  //     fontSize: 15,
-                  //   ),
-                  // ),
-                ],
-              ),
               new TextField(
                     keyboardType: TextInputType.text,
                     decoration: new InputDecoration(hintText: "Enter special characters",
@@ -215,22 +151,8 @@ void clear() {
                   ),
 
                   new Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(10.0),
                 ),
-
-                  // new ElevatedButton(
-                  // onPressed: usergen, 
-                  // child: Text(
-                  //   "Generate"
-                  // ),
-                  // // icon: Icon(Icons.settings_applications),
-                  // style: ElevatedButton.styleFrom(
-                  //   fixedSize: const Size(250, 40),
-                  //   textStyle: TextStyle(
-                  //     fontSize: 20,
-                  //   ) 
-                  // ),
-                  // ),
 
                    Container(
                   margin: const EdgeInsets.all(5),
@@ -255,19 +177,6 @@ void clear() {
                    new Padding(
                 padding: const EdgeInsets.all(10.0),
                 ),
-
-                  // new ElevatedButton(
-                  // onPressed: clear, 
-                  // child: Text(
-                  //   "Clear"
-                  // ),
-                  // style: ElevatedButton.styleFrom(
-                  //   fixedSize: const Size(250, 40),
-                  //   textStyle: TextStyle(
-                  //     fontSize: 20,
-                  //   ) 
-                  // ),
-                  // ),
 
                   Container(
               margin: const EdgeInsets.all(5),

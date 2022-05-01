@@ -1,3 +1,14 @@
 {
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "cSpell.words": [
+        "autogen",
+        "bckgrnd",
+        "formkey",
+        "numstr",
+        "pwdarr",
+        "rflutter",
+        "RGBO",
+        "sublist",
+        "usergen"
+    ]
 }
