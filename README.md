@@ -15,5 +15,9 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 # PASSWORD GENERATING APP
-<h3>HOME</h3>
+<h3>Home</h3>
 <img src="screenshots/pwdgen.jpg" />
+<h3>Default password creation</h3>
+<img src="screenshots/Screenshot_20220702-072726.jpg" />
+<h3>Password creation using user's wish</h3>
+<img src="screenshots/Screenshot_20220702-072730.jpg" />
