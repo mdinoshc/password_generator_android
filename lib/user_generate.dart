@@ -62,7 +62,7 @@ void usergen() {
             content: Text("Incompatible password length..."),
             actions: [
               // ignore: deprecated_member_use
-              FlatButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 }, 
