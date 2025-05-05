@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pwd_gen/auto_generate.dart';
 import 'package:pwd_gen/user_generate.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 // ignore: camel_case_types
 class menu_page extends StatefulWidget {
@@ -14,19 +15,39 @@ class menu_page extends StatefulWidget {
 class _menu_pageState extends State<menu_page> {
   get child => null;
 
+  PackageInfo _packageInfo = PackageInfo(
+      appName: 'Unknown',
+      packageName: 'Unknown',
+      version: 'Unknown',
+      buildNumber: 'Unknown'
+  );
+
+  _initPackageInfo() async {
+    final info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initPackageInfo();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: new Container(
         constraints:const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
+        /*decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
               "assets/images/bckgrnd.jpg",
               ),
             fit: BoxFit.cover
             )
-        ),
+        ),*/
         padding: const EdgeInsets.all(40.0),
         child: SingleChildScrollView(
           child: new Column(
@@ -64,12 +85,12 @@ class _menu_pageState extends State<menu_page> {
                     "Auto Generate"
                   ),
                   style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(250, 40),
+                    fixedSize: const Size(250, 40), backgroundColor: Colors.indigo[900],
+                    foregroundColor: Colors.white,
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
-                    primary: Colors.indigo[900],
-                    shadowColor: Colors.black,
+                    // shadowColor: Colors.black,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)
                     ), 
@@ -86,9 +107,9 @@ class _menu_pageState extends State<menu_page> {
                     "User Defined Generate"
                   ),
                   style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(250, 40),
+                    fixedSize: const Size(250, 40), backgroundColor: Colors.indigo[900],
+                      foregroundColor: Colors.white,
                     shadowColor: Colors.black,
-                    primary: Colors.indigo[900],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
@@ -97,6 +118,14 @@ class _menu_pageState extends State<menu_page> {
                     ) 
                   ),
                   ),
+              ListTile(
+                title: Text("App Version"),
+                subtitle: Text(_packageInfo.version),
+              ),
+              ListTile(
+                title: Text("Build number"),
+                subtitle: Text(_packageInfo.buildNumber),
+              ),
             ],
           ),
         ),

@@ -24,12 +24,16 @@ final TextEditingController t4 = new TextEditingController(text: "");
 
 void usergen() {
   setState(() {
-    if(t1.text.isEmpty || t2.text.isEmpty || t3.text.isEmpty || t4.text.isEmpty) {
+    if(t1.value.runtimeType != int && t1.text.isEmpty
+        || t2.text.isEmpty
+        || t3.value.runtimeType != int && t3.text.isEmpty
+        && t4.text.isEmpty) {
         Alert(
       context: context,
       type: AlertType.warning,
       title: "Alert",
-      desc: "Values can't be empty...",
+      desc: "Values are not enough...",
+      closeFunction: () => Navigator.pop(context),
       buttons: [
         DialogButton(
           child: Text(
@@ -93,18 +97,10 @@ void clear() {
     return Scaffold(
       appBar: new AppBar(
         toolbarHeight: 75.0,
-        title: Text("Generate password using\nuser's favorite characters"),
+        title: Text("Manual Password Generate"),
       ),
       body: new Container(
         constraints:const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              "assets/images/bckgrnd.jpg",
-              ),
-            fit: BoxFit.cover
-            )
-        ),
         padding: const EdgeInsets.all(40.0),
         child: SingleChildScrollView(
           child: new Column(
@@ -161,9 +157,9 @@ void clear() {
                     label: Text('Generate'),
                     icon: Icon(Icons.settings_applications),
                     style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(200, 40),
+                      fixedSize: const Size(200, 40), backgroundColor: Colors.indigo[900],
+                        foregroundColor: Colors.white,
                       shadowColor: Colors.black,
-                      primary: Colors.indigo[900],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
@@ -185,9 +181,9 @@ void clear() {
                 label: Text('Clear'),
                 icon: Icon(Icons.delete_rounded),
                 style: ElevatedButton.styleFrom(
-                  fixedSize: const Size(200, 40),
+                  fixedSize: const Size(200, 40), backgroundColor: Colors.indigo[900],
+                    foregroundColor: Colors.white,
                   shadowColor: Colors.black,
-                  primary: Colors.indigo[900],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),

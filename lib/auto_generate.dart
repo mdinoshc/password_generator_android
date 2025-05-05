@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
 
 // ignore: camel_case_types
 class auto_gen extends StatefulWidget {
@@ -16,14 +14,17 @@ class _auto_genState extends State<auto_gen> {
 
   String data="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`~!@#%^&*()_+-={}[]:|;'\\<>?,./";
   String pwd='';
+
   void autogen() {
     setState(() {
-        if(t1.text.isEmpty) {
+        if(t1.text.isEmpty && t1.value.runtimeType != int)
+        {
         Alert(
       context: context,
       type: AlertType.warning,
       title: "Alert",
       desc: "Values can't be empty...",
+      closeFunction: () => Navigator.pop(context),
       buttons: [
         DialogButton(
           child: Text(
@@ -59,18 +60,10 @@ class _auto_genState extends State<auto_gen> {
     return Scaffold(
       appBar: new AppBar(
         toolbarHeight: 75.0,
-        title: Text("Generate password using\ndefault characters"),
+        title: Text("Auto Password Generate"),
       ),
       body: new Container(
         constraints:const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              "assets/images/bckgrnd.jpg",
-              ),
-            fit: BoxFit.cover
-            )
-        ),
         padding: const EdgeInsets.all(45.0),
         child: SingleChildScrollView(
           child: new Column(
@@ -95,9 +88,9 @@ class _auto_genState extends State<auto_gen> {
                     label: Text('Generate'),
                     icon: Icon(Icons.settings_applications),
                     style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(200, 40),
+                      fixedSize: const Size(200, 40), backgroundColor: Colors.indigo[900],
+                        foregroundColor: Colors.white,
                       shadowColor: Colors.black,
-                      primary: Colors.indigo[900],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
@@ -118,9 +111,9 @@ class _auto_genState extends State<auto_gen> {
                 label: Text('Clear'),
                 icon: Icon(Icons.delete_rounded),
                 style: ElevatedButton.styleFrom(
-                  fixedSize: const Size(200, 40),
+                  fixedSize: const Size(200, 40), backgroundColor: Colors.indigo[900],
+                    foregroundColor: Colors.white,
                   shadowColor: Colors.black,
-                  primary: Colors.indigo[900],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),

@@ -8,30 +8,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DarkLightTheme();
-  }
-}
-
-class DarkLightTheme extends StatefulWidget {
-  const DarkLightTheme({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  _DarkLightThemeState createState() => _DarkLightThemeState();
-}
-
-class _DarkLightThemeState extends State<DarkLightTheme> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: new ThemeData(
-        primaryColor: Colors.indigo[900],
-      ),
-      title: 'Flutter Demo',
+    return new MaterialApp(
+      title: "Calculator App",
       debugShowCheckedModeBanner: false,
-      home: menu_page(),
+      theme: new ThemeData(
+        // brightness: Brightness.dark,
+      ),
+      home: new menu_page(),
     );
   }
 }
+
 
