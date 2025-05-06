@@ -119,7 +119,11 @@ class _menu_pageState extends State<menu_page> {
                   ),
                   ),
               ListTile(
-                title: Text("App Version"),
+                title: Builder(
+                  builder: (context) {
+                    return Text("App Version");
+                  }
+                ),
                 subtitle: Text(_packageInfo.version),
               ),
               ListTile(
