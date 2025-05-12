@@ -35,6 +35,23 @@ class _menu_pageState extends State<menu_page> {
     _initPackageInfo();
   }
 
+  Widget Appdet(String app_text, String app_detail) {
+    return ListTile(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(app_text)
+        ],
+      ),
+      subtitle: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(app_detail)
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +121,7 @@ class _menu_pageState extends State<menu_page> {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>user_gen()));
                   }, 
                   child: Text(
-                    "User Defined Generate"
+                    "Manual Generate"
                   ),
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(250, 40), backgroundColor: Colors.indigo[900],
@@ -118,17 +135,11 @@ class _menu_pageState extends State<menu_page> {
                     ) 
                   ),
                   ),
-              ListTile(
-                title: Builder(
-                  builder: (context) {
-                    return Text("App Version");
-                  }
-                ),
-                subtitle: Text(_packageInfo.version),
-              ),
-              ListTile(
-                title: Text("Build number"),
-                subtitle: Text(_packageInfo.buildNumber),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Appdet("App Version", _packageInfo.version),
+                ],
               ),
             ],
           ),
