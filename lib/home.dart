@@ -55,16 +55,11 @@ class _menu_pageState extends State<menu_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      persistentFooterButtons: [
+        Appdet("App Version", _packageInfo.version),
+      ],
       body: new Container(
         constraints:const BoxConstraints.expand(),
-        /*decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              "assets/images/bckgrnd.jpg",
-              ),
-            fit: BoxFit.cover
-            )
-        ),*/
         padding: const EdgeInsets.all(40.0),
         child: SingleChildScrollView(
           child: new Column(
@@ -135,12 +130,6 @@ class _menu_pageState extends State<menu_page> {
                     ) 
                   ),
                   ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Appdet("App Version", _packageInfo.version),
-                ],
-              ),
             ],
           ),
         ),
